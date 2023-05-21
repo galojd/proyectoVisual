@@ -1,0 +1,12 @@
+E:\Proyectos\ProyectoVisual\Dominio\bin\Debug\net7.0\Dominio.deps.json
+E:\Proyectos\ProyectoVisual\Dominio\bin\Debug\net7.0\Dominio.dll
+E:\Proyectos\ProyectoVisual\Dominio\bin\Debug\net7.0\Dominio.pdb
+E:\Proyectos\ProyectoVisual\Dominio\obj\Debug\net7.0\Dominio.csproj.AssemblyReference.cache
+E:\Proyectos\ProyectoVisual\Dominio\obj\Debug\net7.0\Dominio.GeneratedMSBuildEditorConfig.editorconfig
+E:\Proyectos\ProyectoVisual\Dominio\obj\Debug\net7.0\Dominio.AssemblyInfoInputs.cache
+E:\Proyectos\ProyectoVisual\Dominio\obj\Debug\net7.0\Dominio.AssemblyInfo.cs
+E:\Proyectos\ProyectoVisual\Dominio\obj\Debug\net7.0\Dominio.csproj.CoreCompileInputs.cache
+E:\Proyectos\ProyectoVisual\Dominio\obj\Debug\net7.0\Dominio.dll
+E:\Proyectos\ProyectoVisual\Dominio\obj\Debug\net7.0\refint\Dominio.dll
+E:\Proyectos\ProyectoVisual\Dominio\obj\Debug\net7.0\Dominio.pdb
+E:\Proyectos\ProyectoVisual\Dominio\obj\Debug\net7.0\ref\Dominio.dll

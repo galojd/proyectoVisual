@@ -1,0 +1,17 @@
+E:\Proyectos\ProyectoVisual\Persistencia\bin\Debug\net7.0\Persistencia.deps.json
+E:\Proyectos\ProyectoVisual\Persistencia\bin\Debug\net7.0\Persistencia.runtimeconfig.json
+E:\Proyectos\ProyectoVisual\Persistencia\bin\Debug\net7.0\Persistencia.dll
+E:\Proyectos\ProyectoVisual\Persistencia\bin\Debug\net7.0\Persistencia.pdb
+E:\Proyectos\ProyectoVisual\Persistencia\bin\Debug\net7.0\Dominio.dll
+E:\Proyectos\ProyectoVisual\Persistencia\bin\Debug\net7.0\Dominio.pdb
+E:\Proyectos\ProyectoVisual\Persistencia\obj\Debug\net7.0\Persistencia.csproj.AssemblyReference.cache
+E:\Proyectos\ProyectoVisual\Persistencia\obj\Debug\net7.0\Persistencia.GeneratedMSBuildEditorConfig.editorconfig
+E:\Proyectos\ProyectoVisual\Persistencia\obj\Debug\net7.0\Persistencia.AssemblyInfoInputs.cache
+E:\Proyectos\ProyectoVisual\Persistencia\obj\Debug\net7.0\Persistencia.AssemblyInfo.cs
+E:\Proyectos\ProyectoVisual\Persistencia\obj\Debug\net7.0\Persistencia.csproj.CoreCompileInputs.cache
+E:\Proyectos\ProyectoVisual\Persistencia\obj\Debug\net7.0\Persistencia.csproj.CopyComplete
+E:\Proyectos\ProyectoVisual\Persistencia\obj\Debug\net7.0\Persistencia.dll
+E:\Proyectos\ProyectoVisual\Persistencia\obj\Debug\net7.0\refint\Persistencia.dll
+E:\Proyectos\ProyectoVisual\Persistencia\obj\Debug\net7.0\Persistencia.pdb
+E:\Proyectos\ProyectoVisual\Persistencia\obj\Debug\net7.0\Persistencia.genruntimeconfig.cache
+E:\Proyectos\ProyectoVisual\Persistencia\obj\Debug\net7.0\ref\Persistencia.dll
