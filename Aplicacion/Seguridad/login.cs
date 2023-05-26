@@ -50,7 +50,7 @@ namespace Aplicacion.Seguridad
                 var usuario = await _usermanager.FindByEmailAsync(request.Email!);
                 if (usuario == null)
                 {
-                    throw new ManejadorExcepcion(HttpStatusCode.Unauthorized);
+                    throw new ManejadorExcepcion(HttpStatusCode.Unauthorized, new {mensaje = "No se encontro el Email"});
                 }
 
                 var resultado = await _signInManager.CheckPasswordSignInAsync(usuario, request.Password!, false);
