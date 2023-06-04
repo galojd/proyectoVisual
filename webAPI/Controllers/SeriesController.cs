@@ -54,6 +54,13 @@ namespace webAPI.Controllers
         public async Task<ActionResult<PaginacionModel>> Report(Paginacionserie.ejecuta data){
             return await Mediator.Send(data);
 
+        }
+
+        [HttpGet("listado")]
+        //[Authorize]
+        public async Task<ActionResult<List<SerieDto>>> listalimitada(){
+            //se llama al mediador para que me devuelva la data de comentario
+            return await Mediator.Send(new ConsultaSerieLimitado.ListaSerie());
         } 
         
     }

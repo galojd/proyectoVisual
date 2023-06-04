@@ -41,7 +41,19 @@ namespace webAPI.Controllers
         public async Task<ActionResult<PaginacionModel>> Report(Mostrarultimocap.ejecuta data){
             return await Mediator.Send(data);
 
+        }
+
+        [HttpGet("{codserie}")]
+        public async Task<ActionResult<List<CapituloDto>>> buscapornombre(Guid codserie){
+            //se llama al mediador para que me devuelva la data de curso
+            return await Mediator.Send(new buscacapserie.Listacapporserie{codserie = codserie});
         } 
+
+        [HttpGet("listado")]
+        public async Task<ActionResult<List<CapituloDto>>> Ultimoscap(){
+            //se llama al mediador para que me devuelva la data de comentario
+            return await Mediator.Send(new ConsultaCapituloUltimo.Ejecuta());
+        }
         
     }
 }
