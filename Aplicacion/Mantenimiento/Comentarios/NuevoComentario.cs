@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Dominio.Entidades;
 using FluentValidation;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Persistencia;
 
 namespace Aplicacion.Mantenimiento.Comentarios
@@ -17,6 +18,7 @@ namespace Aplicacion.Mantenimiento.Comentarios
             public string? UsuarioId { get; set; }
             public Guid? CapituloId { get; set; }
             public Guid? SerieId { get; set; }
+            public string? userName{get;set;}
 
         }
 
@@ -38,11 +40,20 @@ namespace Aplicacion.Mantenimiento.Comentarios
             }
             public async Task<Unit> Handle(ejecuta request, CancellationToken cancellationToken)
             {
+
+                var usuarioExistente = await _contexto.Usuario!.FirstOrDefaultAsync(u => u.UserName == request.userName);
+
+                if (usuarioExistente == null || usuarioExistente.Id != request.UsuarioId)
+                {
+                    throw new Exception("El nombre de usuario no está relacionado con un id de usuario existente");
+                }
+
                 Guid _Comentarioid = Guid.NewGuid();
                 var comentario = new Comentario{
                     ComentarioId = _Comentarioid,
                     ComentarioTexto = request.ComentarioTexto,
                     UsuarioId = request.UsuarioId,
+                    userName = request.userName,
                     CapituloId = request.CapituloId,
                     SerieId = request.SerieId,
                     Fechacreacion = DateTime.UtcNow

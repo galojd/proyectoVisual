@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Aplicacion.Contratos;
 using Aplicacion.ManejadorError;
@@ -35,11 +36,9 @@ namespace Aplicacion.Seguridad
         {
             public ValidaEjecuta()
             {
-                RuleFor(x => x.Nombre).NotEmpty();
-                RuleFor(x => x.Apellidos).NotEmpty();
-                RuleFor(x => x.Email).NotEmpty();
-                RuleFor(x => x.Password).NotEmpty();
                 RuleFor(x => x.Username).NotEmpty();
+
+
             }
         }
 
@@ -70,9 +69,34 @@ namespace Aplicacion.Seguridad
                     throw new ManejadorExcepcion(HttpStatusCode.InternalServerError, new { mensaje = "Este Email pertenece a otro usuario" });
                 }
 
-                usuarioiden.NombreCompleto = request.Nombre + " " + request.Apellidos;
-                usuarioiden.Email = request.Email;
-                usuarioiden.PasswordHash = _passwoordhasher.HashPassword(usuarioiden, request.Password!);
+                if (!string.IsNullOrEmpty(request.Nombre))
+                {
+                    usuarioiden.NombreCompleto = request.Nombre + " " + request.Apellidos;
+                }
+
+                if (!string.IsNullOrEmpty(request.Email))
+                {
+                    usuarioiden.Email = request.Email;
+                }
+
+                if (!string.IsNullOrEmpty(request.Password))
+                {
+                    //usuarioiden.PasswordHash = _passwoordhasher.HashPassword(usuarioiden, request.Password!);
+                    if (request.Password.Length < 6)
+                    {
+                        throw new ManejadorExcepcion(HttpStatusCode.BadRequest, new { mensaje = "Su clave debe tener al menos 6 caracteres." });
+                    }
+
+                    // Verificar si contiene una mayúscula, una minúscula y un carácter especial
+                    var regex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,}$");
+                    if (!regex.IsMatch(request.Password))
+                    {
+                        throw new ManejadorExcepcion(HttpStatusCode.BadRequest, new { mensaje = "Su clave debe contener al menos una mayuscula, una minuscula, un digito y un caracter especial." });
+                    }
+
+                    usuarioiden.PasswordHash = _passwoordhasher.HashPassword(usuarioiden, request.Password);
+                    
+                }
 
                 var resultadoupdate = await _usermanager.UpdateAsync(usuarioiden);
                 var resultadoRoles = await _usermanager.GetRolesAsync(usuarioiden);

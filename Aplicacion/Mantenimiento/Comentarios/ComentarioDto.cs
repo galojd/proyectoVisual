@@ -11,7 +11,11 @@ namespace Aplicacion.Mantenimiento.Comentarios
 
         public string? ComentarioTexto { get; set; }
         public string? UsuarioId { get; set; }
+
+         public string? userName{get;set;}
         public Guid? SerieId { get; set; }
         public Guid? CapituloId { get; set; }
+       
+
     }
 }

@@ -3691,11 +3691,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "e:\\Proyectos\\ProyectoVisual\\Persistencia\\Persistencia.csproj",
+      "projectUniqueName": "E:\\Proyectos\\ProyectoVisual\\Persistencia\\Persistencia.csproj",
       "projectName": "Persistencia",
-      "projectPath": "e:\\Proyectos\\ProyectoVisual\\Persistencia\\Persistencia.csproj",
+      "projectPath": "E:\\Proyectos\\ProyectoVisual\\Persistencia\\Persistencia.csproj",
       "packagesPath": "C:\\Users\\Jose\\.nuget\\packages\\",
-      "outputPath": "e:\\Proyectos\\ProyectoVisual\\Persistencia\\obj\\",
+      "outputPath": "E:\\Proyectos\\ProyectoVisual\\Persistencia\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Jose\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -3759,7 +3759,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.105\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.107\\RuntimeIdentifierGraph.json"
       }
     }
   }

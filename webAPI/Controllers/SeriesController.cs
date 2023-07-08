@@ -61,6 +61,12 @@ namespace webAPI.Controllers
         public async Task<ActionResult<List<SerieDto>>> listalimitada(){
             //se llama al mediador para que me devuelva la data de comentario
             return await Mediator.Send(new ConsultaSerieLimitado.ListaSerie());
+        }
+
+        [HttpGet("buscalo/{idserie}")]
+        public async Task<ActionResult<List<SerieDto>>> buscaporcodigo(Guid idserie){
+            //se llama al mediador para que me devuelva la data de curso
+            return await Mediator.Send(new BuscarSerieCodigo.ListaSerieporcodigo{codigo = idserie});
         } 
         
     }

@@ -20,6 +20,11 @@ namespace webAPI.Controllers
         public async Task<ActionResult<Unit>> Crear(EliminarUsuarioSerie.ejecuta data){
             return await Mediator.Send(data);
 
+        }
+        [HttpGet("listar/{usuario}")]
+        public async Task<ActionResult<List<UsuarioDto>>> buscaporusuario(String usuario){
+            //se llama al mediador para que me devuelva la data de curso
+            return await Mediator.Send(new MostrarSerieUsuario.Ejecuta{usuarioId = usuario});
         }        
     }
 }

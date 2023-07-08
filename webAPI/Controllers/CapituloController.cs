@@ -54,6 +54,11 @@ namespace webAPI.Controllers
             //se llama al mediador para que me devuelva la data de comentario
             return await Mediator.Send(new ConsultaCapituloUltimo.Ejecuta());
         }
+
+        [HttpPost("numerocapitulo")]
+        public async Task<ActionResult<List<CapituloDto>>> numerocapitulo(Muestracodnumcap.ejecuta data){
+            return await Mediator.Send(data);
+        }
         
     }
 }

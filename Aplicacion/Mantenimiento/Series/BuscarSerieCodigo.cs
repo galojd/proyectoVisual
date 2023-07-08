@@ -16,13 +16,13 @@ namespace Aplicacion.Mantenimiento.Series
     //LIKE(CONTAINS) '%TEXTO%'
     //startsWith 'texto%'
     //endsWith
-    public class BuscarSerie
+    public class BuscarSerieCodigo
     {
-        public class ListaSeriepornombre : IRequest<List<SerieDto>> {
-            public string? nombreserie{get;set;}
+        public class ListaSerieporcodigo : IRequest<List<SerieDto>> {
+            public Guid? codigo{get;set;}
          }
 
-        public class manejador : IRequestHandler<ListaSeriepornombre, List<SerieDto>>
+        public class manejador : IRequestHandler<ListaSerieporcodigo, List<SerieDto>>
         {
             private readonly SeriesOnlineContext _contexto;
             private readonly  IMapper _mapper;
@@ -32,9 +32,9 @@ namespace Aplicacion.Mantenimiento.Series
                 _mapper = mapper;
             }
 
-            public async Task<List<SerieDto>> Handle(ListaSeriepornombre request, CancellationToken cancellationToken)
+            public async Task<List<SerieDto>> Handle(ListaSerieporcodigo request, CancellationToken cancellationToken)
             {
-                var serie = await _contexto.Serie!.Where(x => x.Nombre!.Contains(request.nombreserie!))
+                var serie = await _contexto.Serie!.Where(x => x.SerieId == request.codigo)
                 .Include(x => x.TextoComentario)
                 .Include(x => x.NumeroCapitulo)
                 //.Include(x => x.UsuariodeSerie)!.ThenInclude(x => x.UserName)

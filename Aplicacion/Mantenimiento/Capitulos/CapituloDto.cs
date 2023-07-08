@@ -11,6 +11,8 @@ namespace Aplicacion.Mantenimiento.Capitulos
         public Guid CapituloId { get; set; }
         public int? NumeroCapitulo { get; set; }
         public string? NombreCapitulo { get; set; }
+
+        public string? Nombreserie{ get; set; }
         public string? CapituloUrl { get; set; }
         public string? imagenurl { get; set; }
         public Guid? SerieId { get; set; }

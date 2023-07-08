@@ -1,25 +1,26 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using MediatR;
-using Persistencia;
-using Microsoft.EntityFrameworkCore;
-using Aplicacion.ManejadorError;
 using System.Net;
+using System.Threading.Tasks;
+using Aplicacion.ManejadorError;
+using AutoMapper;
 using Dominio.Entidades;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using Persistencia;
 
 namespace Aplicacion.Mantenimiento.Capitulos
 {
-    public class buscacapserie
+    public class Muestracodnumcap
     {
-        public class Listacapporserie : IRequest<List<CapituloDto>> {
+        public class ejecuta : IRequest<List<CapituloDto>> {
             public Guid? codserie{get;set;}
+            public int? NumeroCapitulo { get; set; }
          }
 
 
-        public class manejador : IRequestHandler<Listacapporserie, List<CapituloDto>>
+        public class manejador : IRequestHandler<ejecuta, List<CapituloDto>>
         {
             private readonly SeriesOnlineContext _contexto;
             private readonly  IMapper _mapper;
@@ -28,7 +29,7 @@ namespace Aplicacion.Mantenimiento.Capitulos
                 _contexto = contexto;
                 _mapper = mapper;
             }
-            public async Task<List<CapituloDto>> Handle(Listacapporserie request, CancellationToken cancellationToken)
+            public async Task<List<CapituloDto>> Handle(ejecuta request, CancellationToken cancellationToken)
             {
                 var serie = await _contexto.Serie!
                                .FirstOrDefaultAsync(x => x.SerieId == request.codserie);
@@ -40,15 +41,14 @@ namespace Aplicacion.Mantenimiento.Capitulos
 
 
                 var capitulo = await _contexto.Capitulo!
-                                        .Where(x => x != null && x.SerieId == request.codserie)
+                                        .Where(x => x.NumeroCapitulo == request.NumeroCapitulo && x.SerieId == request.codserie)
                                         .Include(x => x.TextoComentario)
-                                        .OrderBy(x => x.NumeroCapitulo)
                                         .ToListAsync();
                 
                 if(capitulo == null){
                     //throw new Exception("El curso no existe");
                     //aqui se comunica cpn el manejadro excepcion
-                    throw new ManejadorExcepcion(HttpStatusCode.NotFound, new {mensaje = "No se encontro la serie que buscaba"});
+                    throw new ManejadorExcepcion(HttpStatusCode.NotFound, new {mensaje = "No se encontro el capitulo que buscaba"});
                 }
 
                 var caitulodto = _mapper.Map<List<Capitulo>, List<CapituloDto>>(capitulo);
